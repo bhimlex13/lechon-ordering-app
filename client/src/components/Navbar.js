@@ -25,7 +25,7 @@ import {
   DialogActions,
   Avatar,
 } from '@mui/material';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+// AccountCircle import removed to fix ESLint warning
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';

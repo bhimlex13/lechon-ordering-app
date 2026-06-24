@@ -38,7 +38,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// AccountCircleIcon import removed to fix ESLint warning
 
 // Widths
 const drawerWidth = 260;
