@@ -14,6 +14,16 @@ const reportsRoutes = require('./routes/reportsRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const settingRoutes = require('./routes/settingRoutes');
 
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Connect to the database
+connectDB();
+
+// Initialize Express app
+const app = express();
+
 // --- TEMPORARY REMOTE SEED ROUTE ---
 const MenuItem = require('./models/menuItemModel');
 const User = require('./models/userModel');
@@ -77,15 +87,6 @@ app.get('/api/seed-db', async (req, res) => {
     res.status(500).send('Error seeding database: ' + err.message);
   }
 });
-
-// Load environment variables from .env file
-dotenv.config();
-
-// Connect to the database
-connectDB();
-
-// Initialize Express app
-const app = express();
 
 // --- Middleware ---
 // UPDATED: Allow both Localhost and Production URL
