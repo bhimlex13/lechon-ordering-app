@@ -14,6 +14,70 @@ const reportsRoutes = require('./routes/reportsRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const settingRoutes = require('./routes/settingRoutes');
 
+// --- TEMPORARY REMOTE SEED ROUTE ---
+const MenuItem = require('./models/menuItemModel');
+const User = require('./models/userModel');
+
+const mockMenuItems = [
+  {
+    name: 'Lechon Paksiw',
+    description: 'Classic tangy and savory lechon stew.',
+    price: 295.0,
+    category: 'Main Course',
+    imageUrl: '/images/lechon_paksiw.png',
+  },
+  {
+    name: 'Crispy Kare-Kare',
+    description: 'Crispy pork with rich peanut sauce.',
+    price: 345.0,
+    category: 'Main Course',
+    imageUrl: '/images/crispy_kare_kare.png',
+  },
+  {
+    name: 'Sinigang na Baboy',
+    description: 'Tangy and savory tamarind-based pork soup.',
+    price: 275.0,
+    category: 'Main Course',
+    imageUrl: '/images/lechon_paksiw.png',
+  },
+  {
+    name: 'Steamed Pampano',
+    description: 'Fresh pampano fish steamed to perfection.',
+    price: 565.0,
+    category: 'Seafoods',
+    imageUrl: '/images/seafood.png',
+  },
+  {
+    name: 'Shrimp Thermidor',
+    description: 'Creamy and cheesy baked shrimp.',
+    price: 365.0,
+    category: 'Seafoods',
+    imageUrl: '/images/seafood.png',
+  },
+  {
+    name: 'Lumpiang Shanghai',
+    description: 'Crispy fried spring rolls with dipping sauce.',
+    price: 290.0,
+    category: 'Appetizer',
+    imageUrl: '/images/appetizer.png',
+  },
+];
+
+app.get('/api/seed-db', async (req, res) => {
+  try {
+    await User.deleteMany();
+    await User.create([
+      { name: 'Admin User', email: 'admin@crispylechonhouse.example', password: 'password123', role: 'Admin' },
+      { name: 'Customer User', email: 'customer@example.com', password: 'password123', role: 'Customer' }
+    ]);
+    await MenuItem.deleteMany();
+    await MenuItem.insertMany(mockMenuItems);
+    res.send('Database Seeded Successfully! You can now close this tab.');
+  } catch (err) {
+    res.status(500).send('Error seeding database: ' + err.message);
+  }
+});
+
 // Load environment variables from .env file
 dotenv.config();
 
