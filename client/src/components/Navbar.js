@@ -265,18 +265,6 @@ function Navbar() {
                     borderRadius: '50%' 
                   }}
               />
-              <Typography 
-                variant="h6" 
-                sx={{ 
-                  fontWeight: '900', 
-                  color: theme.palette.primary.main, 
-                  letterSpacing: 0.5,
-                  display: { xs: 'block', sm: 'block' },
-                  fontSize: { xs: '1rem', sm: '1.25rem' }
-                }}
-              >
-                {branding.name.toUpperCase()}
-              </Typography>
             </Box>
 
             {/* --- DESKTOP LINKS (Hidden on xs/sm) --- */}

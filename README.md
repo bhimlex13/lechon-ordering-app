@@ -954,22 +954,40 @@ This project targets **WCAG 2.1 Level AA** compliance on customer-facing pages.
 
 ## 14. Screenshots
 
-> Add screenshots of the running application here after implementation. Suggested captures:
+### Customer Pages
 
-| Page | What to capture |
-|---|---|
-| Home | Hero banner + Lechon grid + A La Carte grid + Dine-In carousel + Contact footer |
-| Lechon | Product listing with pax/weight details + detail modal |
-| Menu | Category-filtered grid |
-| Cart | Cart drawer + full cart page with quantity controls |
-| Checkout | Delivery map + scheduled date picker + payment method selection |
-| Mock Payment | Simulated payment page with "Simulate Success" / "Cancel" buttons |
-| Order Detail | Order summary + status stepper + payment verification result |
-| Orders History | Order list with status chips |
-| Admin Dashboard | Metrics cards + charts (Recharts) |
-| Admin Orders | Filterable order table |
-| Admin Reports | PDF preview + date range filter |
-| Admin Settings | Map, tax, fees, terms tabs |
+**Home Page**
+![Home Page](screenshots/home.png)
+
+**Menu Page**
+![Menu Page](screenshots/menu.png)
+
+**Lechon Page**
+![Lechon Page](screenshots/lechon.png)
+
+**FAQ Page**
+![FAQ Page](screenshots/faq.png)
+
+### Admin Pages
+
+**Dashboard**
+![Admin Dashboard](screenshots/admin_dashboard.png)
+
+**Orders**
+![Admin Orders](screenshots/admin_orders.png)
+
+**Menu**
+![Admin Menu](screenshots/admin_menu.png)
+
+**Users**
+![Admin Users](screenshots/admin_users.png)
+
+**Reports**
+![Admin Reports](screenshots/admin_reports.png)
+
+**Settings**
+![Admin Settings](screenshots/admin_settings.png)
+
 
 ---
 

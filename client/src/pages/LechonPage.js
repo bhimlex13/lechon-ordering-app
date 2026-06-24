@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useLoading } from '../context/LoadingContext';
 import { useNotification } from '../context/NotificationContext'; // <--- NEW Notification Hook
 import { useNavigate } from 'react-router-dom';
+import { branding } from '../config/branding';
 
 import {
   Container,
@@ -84,6 +85,17 @@ function LechonPage() {
       {/* HEADER SECTION - Updated to Orange Theme */}
       <Box sx={{ bgcolor: theme.palette.primary.light, py: 6, mb: 4, textAlign: 'center', borderBottom: `1px solid ${theme.palette.primary.main}` }}>
         <Container maxWidth="lg">
+          <Typography 
+            variant="h4" 
+            sx={{ 
+              color: BRAND_DARK_ORANGE, 
+              fontWeight: '900', 
+              letterSpacing: 1,
+              mb: 1
+            }}
+          >
+            {branding.name}
+          </Typography>
           <Typography 
             variant="subtitle1" 
             sx={{ 

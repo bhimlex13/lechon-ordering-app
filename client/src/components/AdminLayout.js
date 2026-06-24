@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet, Navigate, Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Outlet, Navigate, Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   Box,
@@ -47,6 +47,7 @@ const closedDrawerWidth = 72; // Width when collapsed (icon only)
 function AdminLayout() {
   const { userInfo, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
@@ -149,7 +150,9 @@ function AdminLayout() {
         
         {/* LINKS */}
         <List sx={{ flexGrow: 1, py: 2 }}>
-          {[...adminLinks, ...(userInfo.role === 'Superadmin' ? superAdminLinks : [])].map((link) => (
+          {[...adminLinks, ...(userInfo.role === 'Superadmin' ? superAdminLinks : [])].map((link) => {
+            const isActive = location.pathname.startsWith(link.path);
+            return (
             <ListItem key={link.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 component={RouterLink}
@@ -158,8 +161,9 @@ function AdminLayout() {
                   minHeight: 48,
                   justifyContent: openDesktop ? 'initial' : 'center',
                   px: 2.5,
-                  color: 'white',
-                  '&:hover': { backgroundColor: theme.palette.primary.dark }
+                  color: isActive ? 'white' : '#aaa',
+                  backgroundColor: isActive ? theme.palette.primary.main : 'transparent',
+                  '&:hover': { backgroundColor: isActive ? theme.palette.primary.dark : 'rgba(255,255,255,0.05)' }
                 }}
               >
                 <ListItemIcon
@@ -167,15 +171,15 @@ function AdminLayout() {
                     minWidth: 0,
                     mr: openDesktop ? 3 : 'auto',
                     justifyContent: 'center',
-                    color: theme.palette.primary.light
+                    color: isActive ? 'white' : theme.palette.primary.main
                   }}
                 >
                   {link.icon}
                 </ListItemIcon>
-                <ListItemText primary={link.text} sx={{ opacity: openDesktop ? 1 : 0 }} />
+                <ListItemText primary={link.text} sx={{ opacity: openDesktop ? 1 : 0, fontWeight: isActive ? 'bold' : 'normal' }} />
               </ListItemButton>
             </ListItem>
-          ))}
+          )})}
         </List>
 
         <Divider sx={{ bgcolor: '#333' }} />

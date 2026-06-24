@@ -240,6 +240,7 @@ function HomePage() {
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#000',
@@ -256,9 +257,36 @@ function HomePage() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            opacity: 0.8,
+            opacity: 0.6,
           }}
         />
+        <Typography 
+          variant="h2" 
+          component="h1"
+          sx={{ 
+            color: 'white', 
+            fontWeight: '900', 
+            zIndex: 1, 
+            textAlign: 'center',
+            textShadow: '2px 2px 8px rgba(0,0,0,0.8)',
+            px: 2
+          }}
+        >
+          {branding.name.toUpperCase()}
+        </Typography>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: 'white', 
+            zIndex: 1, 
+            textAlign: 'center',
+            mt: 2,
+            textShadow: '1px 1px 4px rgba(0,0,0,0.8)',
+            px: 2
+          }}
+        >
+          {branding.tagline}
+        </Typography>
       </Box>
 
       <Container maxWidth="lg" sx={{ mt: 6, mb: 8 }}>
