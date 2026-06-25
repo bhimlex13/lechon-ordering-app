@@ -136,10 +136,25 @@ const mockMenuItems = [
   },
 ];
 
+const categoriesToSeed = [
+  { name: 'Lechon' },
+  { name: 'Main Course' },
+  { name: 'Pork' },
+  { name: 'Chicken' },
+  { name: 'Beef' },
+  { name: 'Seafoods' },
+  { name: 'Seafood' },
+  { name: 'Appetizer' },
+  { name: 'Dessert' },
+  { name: 'Beverage' },
+  { name: 'Extras' }
+];
+
 const allMenuItems = [...mockMenuItems, ...lechonData];
 
 module.exports = {
   lechonData,
   mockMenuItems,
-  allMenuItems
+  allMenuItems,
+  categoriesToSeed
 };

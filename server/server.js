@@ -28,7 +28,8 @@ const app = express();
 const MenuItem = require('./models/menuItemModel');
 const User = require('./models/userModel');
 
-const { allMenuItems } = require('./data/seedData');
+const { allMenuItems, categoriesToSeed } = require('./data/seedData');
+const Category = require('./models/categoryModel');
 
 app.get('/api/seed-db', async (req, res) => {
   try {
@@ -39,6 +40,8 @@ app.get('/api/seed-db', async (req, res) => {
     ]);
     await MenuItem.deleteMany();
     await MenuItem.insertMany(allMenuItems);
+    await Category.deleteMany();
+    await Category.insertMany(categoriesToSeed);
     res.send('Database Seeded Successfully! You can now close this tab.');
   } catch (err) {
     res.status(500).send('Error seeding database: ' + err.message);

@@ -7,7 +7,8 @@ const MenuItem = require('./models/menuItemModel');
 const User = require('./models/userModel');
 // We can import User, Order, etc., if we want to seed them too
 
-const { allMenuItems } = require('./data/seedData');
+const { allMenuItems, categoriesToSeed } = require('./data/seedData');
+const Category = require('./models/categoryModel');
 
 // Load env vars
 dotenv.config();
@@ -28,6 +29,8 @@ const importData = async () => {
 
     // Insert new data
     await MenuItem.insertMany(allMenuItems);
+    await Category.deleteMany();
+    await Category.insertMany(categoriesToSeed);
 
     console.log('Data Imported Successfully!');
     process.exit();
@@ -47,6 +50,7 @@ const destroyData = async () => {
       { name: 'Customer User', email: 'customer@example.com', password: 'password123', role: 'Customer' }
     ]);
     await MenuItem.deleteMany();
+    await Category.deleteMany();
     console.log('Data Destroyed Successfully!');
     process.exit();
   } catch (error) {
