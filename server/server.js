@@ -28,50 +28,7 @@ const app = express();
 const MenuItem = require('./models/menuItemModel');
 const User = require('./models/userModel');
 
-const mockMenuItems = [
-  {
-    name: 'Lechon Paksiw',
-    description: 'Classic tangy and savory lechon stew.',
-    price: 295.0,
-    category: 'Main Course',
-    imageUrl: '/images/lechon_paksiw.png',
-  },
-  {
-    name: 'Crispy Kare-Kare',
-    description: 'Crispy pork with rich peanut sauce.',
-    price: 345.0,
-    category: 'Main Course',
-    imageUrl: '/images/crispy_kare_kare.png',
-  },
-  {
-    name: 'Sinigang na Baboy',
-    description: 'Tangy and savory tamarind-based pork soup.',
-    price: 275.0,
-    category: 'Main Course',
-    imageUrl: '/images/lechon_paksiw.png',
-  },
-  {
-    name: 'Steamed Pampano',
-    description: 'Fresh pampano fish steamed to perfection.',
-    price: 565.0,
-    category: 'Seafoods',
-    imageUrl: '/images/seafood.png',
-  },
-  {
-    name: 'Shrimp Thermidor',
-    description: 'Creamy and cheesy baked shrimp.',
-    price: 365.0,
-    category: 'Seafoods',
-    imageUrl: '/images/seafood.png',
-  },
-  {
-    name: 'Lumpiang Shanghai',
-    description: 'Crispy fried spring rolls with dipping sauce.',
-    price: 290.0,
-    category: 'Appetizer',
-    imageUrl: '/images/appetizer.png',
-  },
-];
+const { allMenuItems } = require('./data/seedData');
 
 app.get('/api/seed-db', async (req, res) => {
   try {
@@ -81,7 +38,7 @@ app.get('/api/seed-db', async (req, res) => {
       { name: 'Customer User', email: 'customer@example.com', password: 'password123', role: 'Customer' }
     ]);
     await MenuItem.deleteMany();
-    await MenuItem.insertMany(mockMenuItems);
+    await MenuItem.insertMany(allMenuItems);
     res.send('Database Seeded Successfully! You can now close this tab.');
   } catch (err) {
     res.status(500).send('Error seeding database: ' + err.message);
